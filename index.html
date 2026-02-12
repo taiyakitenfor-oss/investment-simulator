@@ -103,6 +103,18 @@
             font-size: 1.1em;
         }
 
+        /* 新機能バッジ */
+        .new-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+
         /* SEO用の説明文セクション */
         .seo-description {
             padding: 30px;
@@ -120,6 +132,124 @@
             line-height: 1.8;
             color: #333;
             margin-bottom: 10px;
+        }
+
+        /* 目標設定セクション */
+        .goal-section {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .goal-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .goal-presets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .goal-preset {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .goal-preset:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .goal-preset.active {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .goal-preset .icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .goal-preset .name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .goal-preset .amount {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .custom-goal {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .custom-goal input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .goal-progress {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .goal-progress.show {
+            display: block;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .goal-status {
+            text-align: center;
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .goal-status.achieved {
+            color: #4caf50;
+            font-weight: 700;
         }
 
         .tabs {
@@ -184,7 +314,7 @@
             font-size: 0.95em;
         }
 
-        input[type="number"] {
+        input[type="number"], select {
             width: 100%;
             padding: 12px;
             border: 2px solid #e0e0e0;
@@ -193,7 +323,7 @@
             transition: all 0.3s;
         }
 
-        input[type="number"]:focus {
+        input[type="number"]:focus, select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -203,6 +333,68 @@
             font-size: 0.85em;
             color: #666;
             margin-top: 5px;
+        }
+
+        /* NISA切り替えスイッチ */
+        .switch-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .tax-info {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 15px;
+            font-size: 0.9em;
         }
 
         .calculate-btn {
@@ -225,6 +417,110 @@
 
         .calculate-btn:active {
             transform: translateY(0);
+        }
+
+        /* 比較モード用ボタン */
+        .compare-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .compare-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 比較モード */
+        .comparison-mode {
+            display: none;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .comparison-mode.active {
+            display: block;
+        }
+
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .comparison-header h3 {
+            color: #667eea;
+            font-size: 1.5em;
+        }
+
+        .close-compare-btn {
+            padding: 10px 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .comparison-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-item h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .comparison-item .result-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .comparison-item .result-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .comparison-item .result-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .comparison-details {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .comparison-details div {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         .results-section {
@@ -326,45 +622,6 @@
             opacity: 0.3;
         }
 
-        .affiliate-banner {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 30px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
-        }
-
-        .affiliate-banner h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .affiliate-banner p {
-            margin-bottom: 20px;
-            opacity: 0.95;
-            font-size: 1.05em;
-        }
-
-        .affiliate-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: white;
-            color: #f5576c;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1em;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .affiliate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
         .affiliate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -411,6 +668,24 @@
             border-radius: 15px;
             font-size: 0.75em;
             font-weight: 700;
+        }
+
+        .affiliate-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #f5576c;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .affiliate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
         /* SEO用フッター */
@@ -483,6 +758,22 @@
                 font-size: 0.9em;
             }
 
+            .goal-section {
+                padding: 20px 15px;
+            }
+
+            .goal-presets {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .custom-goal {
+                flex-direction: column;
+            }
+
+            .custom-goal input {
+                width: 100%;
+            }
+
             .tabs {
                 flex-direction: row;
             }
@@ -518,7 +809,7 @@
                 font-size: 0.9em;
             }
 
-            input[type="number"] {
+            input[type="number"], select {
                 padding: 10px;
                 font-size: 1em;
                 width: 100%;
@@ -598,6 +889,14 @@
                 font-size: 0.9em;
             }
 
+            .comparison-mode {
+                padding: 15px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
             .affiliate-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -659,6 +958,45 @@
             </p>
         </section>
 
+        <!-- 目標設定セクション -->
+        <section class="goal-section">
+            <h3>🎯 目標を設定しよう</h3>
+            <div class="goal-presets">
+                <div class="goal-preset" onclick="setGoal(5000000, 'マイホーム頭金')">
+                    <div class="icon">🏠</div>
+                    <div class="name">マイホーム頭金</div>
+                    <div class="amount">500万円</div>
+                </div>
+                <div class="goal-preset" onclick="setGoal(10000000, '子供の教育資金')">
+                    <div class="icon">🎓</div>
+                    <div class="name">子供の教育資金</div>
+                    <div class="amount">1000万円</div>
+                </div>
+                <div class="goal-preset" onclick="setGoal(20000000, '老後資金')">
+                    <div class="icon">🌴</div>
+                    <div class="name">老後資金</div>
+                    <div class="amount">2000万円</div>
+                </div>
+                <div class="goal-preset" onclick="setGoal(30000000, '早期リタイア')">
+                    <div class="icon">🚀</div>
+                    <div class="name">早期リタイア</div>
+                    <div class="amount">3000万円</div>
+                </div>
+            </div>
+            <div class="custom-goal">
+                <label>カスタム目標金額（円）：</label>
+                <input type="number" id="custom-goal" placeholder="例: 10000000" step="100000">
+                <button class="calculate-btn" style="flex: 0 0 auto; width: auto; padding: 12px 30px;" onclick="setCustomGoal()">設定</button>
+            </div>
+            <div class="goal-progress" id="goal-progress">
+                <h4 style="margin-bottom: 10px; color: #667eea;">目標: <span id="goal-name">未設定</span> - <span id="goal-amount-display">¥0</span></h4>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar" style="width: 0%">0%</div>
+                </div>
+                <div class="goal-status" id="goal-status"></div>
+            </div>
+        </section>
+
         <div class="tabs">
             <button class="tab active" onclick="switchTab('lumpsum')">一括投資</button>
             <button class="tab" onclick="switchTab('monthly')">積立投資</button>
@@ -672,6 +1010,18 @@
                     <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">
                         まとまった資金を一度に投資した場合の将来価値を計算します
                     </p>
+
+                    <!-- NISA切り替え -->
+                    <div class="switch-group">
+                        <label style="margin: 0;">NISA口座を使用</label>
+                        <label class="switch">
+                            <input type="checkbox" id="nisa-lumpsum" onchange="toggleNisaInfo('lumpsum')">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="tax-info" id="tax-info-lumpsum" style="display: none;">
+                        💡 NISA口座では運用益が非課税になります（通常は20.315%課税）
+                    </div>
 
                     <div class="input-group">
                         <label>初期投資額（円）</label>
@@ -692,6 +1042,7 @@
                     </div>
 
                     <button class="calculate-btn" onclick="calculateLumpsum()">シミュレーション実行</button>
+                    <button class="compare-btn" onclick="addToComparison('lumpsum')">📊 このプランを比較に追加</button>
                 </div>
 
                 <div class="results-section" id="results-lumpsum">
@@ -714,6 +1065,18 @@
                     <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">
                         毎月一定額を積み立てた場合の将来価値を計算します（ドルコスト平均法）
                     </p>
+
+                    <!-- NISA切り替え -->
+                    <div class="switch-group">
+                        <label style="margin: 0;">NISA口座を使用</label>
+                        <label class="switch">
+                            <input type="checkbox" id="nisa-monthly" onchange="toggleNisaInfo('monthly')">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="tax-info" id="tax-info-monthly" style="display: none;">
+                        💡 新NISAつみたて投資枠: 年間120万円まで非課税
+                    </div>
 
                     <div class="input-group">
                         <label>初期投資額（円）</label>
@@ -740,6 +1103,7 @@
                     </div>
 
                     <button class="calculate-btn" onclick="calculateMonthly()">シミュレーション実行</button>
+                    <button class="compare-btn" onclick="addToComparison('monthly')">📊 このプランを比較に追加</button>
                 </div>
 
                 <div class="results-section" id="results-monthly">
@@ -751,6 +1115,17 @@
                         <p>左側の項目を入力してシミュレーションを実行してください</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- 比較モード -->
+        <div class="comparison-mode" id="comparison-mode">
+            <div class="comparison-header">
+                <h3>📊 プラン比較</h3>
+                <button class="close-compare-btn" onclick="closeComparison()">閉じる</button>
+            </div>
+            <div class="comparison-grid" id="comparison-grid">
+                <!-- 比較項目がここに追加される -->
             </div>
         </div>
 
@@ -798,7 +1173,7 @@
                 ※本シミュレーションは参考値であり、実際の運用成績を保証するものではありません。
             </p>
             <div class="footer-links">
-                <p>&copy; 2026 投資シミュレーター All Rights Reserved.</p>
+                <p>&copy; 2025 投資シミュレーター All Rights Reserved.</p>
             </div>
         </footer>
     </div>
@@ -806,6 +1181,117 @@
     <script>
         let myChart = null;
         let currentTab = 'lumpsum';
+        let goalAmount = 0;
+        let goalName = '未設定';
+        let comparisonPlans = [];
+        let lastCalculatedResult = null;
+
+        // 目標設定
+        function setGoal(amount, name) {
+            goalAmount = amount;
+            goalName = name;
+            document.getElementById('goal-amount-display').textContent = formatCurrency(amount);
+            document.getElementById('goal-name').textContent = name;
+            document.getElementById('goal-progress').classList.add('show');
+            document.querySelectorAll('.goal-preset').forEach(el => el.classList.remove('active'));
+            event.target.closest('.goal-preset').classList.add('active');
+            updateGoalProgress();
+        }
+
+        function setCustomGoal() {
+            const amount = parseFloat(document.getElementById('custom-goal').value);
+            if (amount && amount > 0) {
+                setGoal(amount, 'カスタム目標');
+            }
+        }
+
+        function updateGoalProgress() {
+            if (!lastCalculatedResult || goalAmount === 0) return;
+            
+            const finalValue = lastCalculatedResult.finalValue;
+            const progress = Math.min((finalValue / goalAmount) * 100, 100);
+            
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-bar').textContent = Math.round(progress) + '%';
+            
+            const statusEl = document.getElementById('goal-status');
+            if (finalValue >= goalAmount) {
+                statusEl.textContent = '🎉 目標達成！おめでとうございます！';
+                statusEl.className = 'goal-status achieved';
+            } else {
+                const shortage = goalAmount - finalValue;
+                statusEl.textContent = `目標まであと ${formatCurrency(shortage)}`;
+                statusEl.className = 'goal-status';
+            }
+        }
+
+        // NISA情報表示切り替え
+        function toggleNisaInfo(type) {
+            const checkbox = document.getElementById(`nisa-${type}`);
+            const info = document.getElementById(`tax-info-${type}`);
+            info.style.display = checkbox.checked ? 'block' : 'none';
+        }
+
+        // 比較モードに追加
+        function addToComparison(type) {
+            if (!lastCalculatedResult) {
+                alert('先にシミュレーションを実行してください');
+                return;
+            }
+
+            const plan = {
+                type: type,
+                name: type === 'lumpsum' ? '一括投資' : '積立投資',
+                ...lastCalculatedResult,
+                timestamp: Date.now()
+            };
+
+            comparisonPlans.push(plan);
+            updateComparisonView();
+            document.getElementById('comparison-mode').classList.add('active');
+        }
+
+        function updateComparisonView() {
+            const grid = document.getElementById('comparison-grid');
+            grid.innerHTML = '';
+
+            comparisonPlans.forEach((plan, index) => {
+                const item = document.createElement('div');
+                item.className = 'comparison-item';
+                
+                const taxAfterValue = plan.isNisa ? plan.finalValue : (plan.totalInvested + (plan.totalReturn * 0.79685));
+                
+                item.innerHTML = `
+                    <h4>${plan.name} プラン${index + 1}</h4>
+                    <div class="result-summary">
+                        <div class="result-label">最終資産額${plan.isNisa ? ' (非課税)' : ' (税引後)'}</div>
+                        <div class="result-value">${formatCurrency(taxAfterValue)}</div>
+                    </div>
+                    <div class="comparison-details">
+                        <div><span>投資元本</span><span>${formatCurrency(plan.totalInvested)}</span></div>
+                        <div><span>運用益（税引前）</span><span>${formatCurrency(plan.totalReturn)}</span></div>
+                        ${!plan.isNisa ? `<div><span>税金</span><span>${formatCurrency(plan.totalReturn * 0.20315)}</span></div>` : ''}
+                        <div><span>期間</span><span>${plan.years}年</span></div>
+                        <div><span>年利</span><span>${plan.returnRate}%</span></div>
+                        ${plan.monthlyAmount ? `<div><span>月額</span><span>${formatCurrency(plan.monthlyAmount)}</span></div>` : ''}
+                    </div>
+                    <button onclick="removeFromComparison(${index})" style="margin-top: 15px; padding: 8px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">削除</button>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        function removeFromComparison(index) {
+            comparisonPlans.splice(index, 1);
+            updateComparisonView();
+            if (comparisonPlans.length === 0) {
+                closeComparison();
+            }
+        }
+
+        function closeComparison() {
+            document.getElementById('comparison-mode').classList.remove('active');
+        }
 
         function switchTab(tab) {
             currentTab = tab;
@@ -816,7 +1302,6 @@
             event.target.classList.add('active');
             document.getElementById(tab + '-content').classList.add('active');
             
-            // タブ切り替え時に対応する結果エリアを更新
             if (tab === 'lumpsum') {
                 calculateLumpsum();
             } else {
@@ -832,23 +1317,46 @@
             }).format(num);
         }
 
+        function calculateTax(profit, isNisa) {
+            if (isNisa) return 0;
+            return profit * 0.20315; // 20.315% 税金
+        }
+
         function calculateLumpsum() {
             const initial = parseFloat(document.getElementById('initial-lumpsum').value) || 0;
             const returnRate = parseFloat(document.getElementById('return-lumpsum').value) / 100 || 0;
             const years = parseInt(document.getElementById('years-lumpsum').value) || 0;
+            const isNisa = document.getElementById('nisa-lumpsum').checked;
 
             const data = [];
             for (let year = 0; year <= years; year++) {
                 const value = initial * Math.pow(1 + returnRate, year);
+                const profit = value - initial;
+                const tax = calculateTax(profit, isNisa);
+                const afterTax = value - tax;
+                
                 data.push({
                     year: year,
                     principal: initial,
-                    interest: value - initial,
-                    total: value
+                    interest: profit,
+                    tax: tax,
+                    total: value,
+                    afterTax: afterTax
                 });
             }
 
-            displayResults(data, initial, 0, 'results-lumpsum');
+            lastCalculatedResult = {
+                totalInvested: initial,
+                totalReturn: data[data.length - 1].interest,
+                finalValue: data[data.length - 1].afterTax,
+                years: years,
+                returnRate: document.getElementById('return-lumpsum').value,
+                isNisa: isNisa,
+                monthlyAmount: 0
+            };
+
+            displayResults(data, initial, 0, 'results-lumpsum', isNisa);
+            updateGoalProgress();
         }
 
         function calculateMonthly() {
@@ -856,6 +1364,7 @@
             const monthlyAmount = parseFloat(document.getElementById('monthly-amount').value) || 0;
             const returnRate = parseFloat(document.getElementById('return-monthly').value) / 100 || 0;
             const years = parseInt(document.getElementById('years-monthly').value) || 0;
+            const isNisa = document.getElementById('nisa-monthly').checked;
 
             const monthlyRate = returnRate / 12;
             const data = [];
@@ -871,27 +1380,45 @@
                     futureValue += monthlyAmount * months;
                 }
 
+                const profit = futureValue - totalPrincipal;
+                const tax = calculateTax(profit, isNisa);
+                const afterTax = futureValue - tax;
+
                 data.push({
                     year: year,
                     principal: totalPrincipal,
-                    interest: futureValue - totalPrincipal,
-                    total: futureValue
+                    interest: profit,
+                    tax: tax,
+                    total: futureValue,
+                    afterTax: afterTax
                 });
             }
 
-            displayResults(data, initial, monthlyAmount, 'results-monthly');
+            lastCalculatedResult = {
+                totalInvested: data[data.length - 1].principal,
+                totalReturn: data[data.length - 1].interest,
+                finalValue: data[data.length - 1].afterTax,
+                years: years,
+                returnRate: document.getElementById('return-monthly').value,
+                isNisa: isNisa,
+                monthlyAmount: monthlyAmount
+            };
+
+            displayResults(data, initial, monthlyAmount, 'results-monthly', isNisa);
+            updateGoalProgress();
         }
 
-        function displayResults(data, initial, monthly, targetId) {
+        function displayResults(data, initial, monthly, targetId, isNisa) {
             const finalData = data[data.length - 1];
             const totalInvested = finalData.principal;
             const totalReturn = finalData.interest;
-            const finalValue = finalData.total;
+            const totalTax = finalData.tax;
+            const finalValue = finalData.afterTax;
 
             const resultsHTML = `
                 <div class="summary-cards">
                     <div class="summary-card highlight">
-                        <div class="card-label">最終資産額</div>
+                        <div class="card-label">最終資産額${isNisa ? ' (非課税)' : ' (税引後)'}</div>
                         <div class="card-value">${formatCurrency(finalValue)}</div>
                     </div>
                     <div class="summary-card">
@@ -899,9 +1426,20 @@
                         <div class="card-value">${formatCurrency(totalInvested)}</div>
                     </div>
                     <div class="summary-card">
-                        <div class="card-label">運用益</div>
+                        <div class="card-label">運用益（税引前）</div>
                         <div class="card-value">${formatCurrency(totalReturn)}</div>
                     </div>
+                    ${!isNisa ? `
+                    <div class="summary-card">
+                        <div class="card-label">税金 (20.315%)</div>
+                        <div class="card-value">${formatCurrency(totalTax)}</div>
+                    </div>
+                    ` : `
+                    <div class="summary-card" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white;">
+                        <div class="card-label">NISA節税額</div>
+                        <div class="card-value">${formatCurrency(totalReturn * 0.20315)}</div>
+                    </div>
+                    `}
                 </div>
 
                 <div class="chart-container">
@@ -915,6 +1453,7 @@
                                 <th>年</th>
                                 <th>元本</th>
                                 <th>運用益</th>
+                                ${!isNisa ? '<th>税金</th>' : ''}
                                 <th>合計</th>
                             </tr>
                         </thead>
@@ -924,7 +1463,8 @@
                                     <td>${d.year}年</td>
                                     <td>${formatCurrency(d.principal)}</td>
                                     <td>${formatCurrency(d.interest)}</td>
-                                    <td>${formatCurrency(d.total)}</td>
+                                    ${!isNisa ? `<td>${formatCurrency(d.tax)}</td>` : ''}
+                                    <td>${formatCurrency(d.afterTax)}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
@@ -953,8 +1493,8 @@
                             tension: 0.4
                         },
                         {
-                            label: '合計（元本+運用益）',
-                            data: data.map(d => d.total),
+                            label: isNisa ? '合計（非課税）' : '合計（税引後）',
+                            data: data.map(d => d.afterTax),
                             borderColor: '#667eea',
                             backgroundColor: 'rgba(102, 126, 234, 0.1)',
                             fill: true,
