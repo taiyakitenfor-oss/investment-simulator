@@ -64,6 +64,11 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -78,6 +83,7 @@
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
+            width: 100%;
         }
 
         header {
@@ -444,11 +450,13 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 5px;
             }
 
             .container {
                 border-radius: 10px;
+                width: calc(100vw - 10px);
+                max-width: 100%;
             }
 
             header {
@@ -456,11 +464,11 @@
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
             }
 
             .subtitle {
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
 
             .seo-description {
@@ -481,7 +489,7 @@
 
             .tab {
                 padding: 15px 10px;
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
 
             .content {
@@ -495,7 +503,7 @@
             }
 
             .input-section h3 {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
 
             .input-section p {
@@ -513,6 +521,7 @@
             input[type="number"] {
                 padding: 10px;
                 font-size: 1em;
+                width: 100%;
             }
 
             .input-hint {
@@ -522,6 +531,12 @@
             .calculate-btn {
                 padding: 12px;
                 font-size: 1em;
+                width: 100%;
+            }
+
+            .results-section {
+                width: 100%;
+                overflow-x: hidden;
             }
 
             .summary-cards {
@@ -542,18 +557,27 @@
             }
 
             .chart-container {
-                padding: 15px;
+                padding: 10px;
                 height: 250px;
+                width: 100%;
+                overflow: hidden;
             }
 
             .breakdown-table {
-                padding: 15px;
+                padding: 10px;
                 max-height: 300px;
                 font-size: 0.85em;
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            table {
+                width: 100%;
+                font-size: 0.8em;
             }
 
             th, td {
-                padding: 8px 5px;
+                padding: 8px 4px;
                 font-size: 0.85em;
             }
 
